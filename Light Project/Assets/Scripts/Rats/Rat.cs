@@ -4,7 +4,8 @@ using UnityEngine.AI;
 public class Rat : MonoBehaviour
 {
     private NavMeshAgent nav;
-
+    private const int SEEK_RADIUS = 15;
+    
     private void Start()
     {
         nav = GetComponent<NavMeshAgent>();
@@ -13,7 +14,7 @@ public class Rat : MonoBehaviour
 
     private void Update()
     {
-        if(nav.remainingDistance >1)
+        if(nav.remainingDistance > 1)
         {
             nav.destination = NewDestination();
         }
@@ -22,22 +23,12 @@ public class Rat : MonoBehaviour
 
     private Vector3 NewDestination()
     {
-        Vector3 newDest = new Vector3();
+        Vector3 randomDirection = Random.insideUnitSphere * SEEK_RADIUS;
+        randomDirection += transform.position;
+        NavMeshHit hit;
+        NavMesh.SamplePosition(randomDirection, out hit, SEEK_RADIUS, 1);
+        Vector3 finalPosition = hit.position;
 
-        Vector3 randomDir = Random.onUnitSphere;
-        randomDir.y = 0;
-
-        RaycastHit hit;
-        if(Physics.Raycast(transform.position,randomDir,out hit))
-        {
-            newDest = hit.point;
-            newDest.y = .01f;
-        }
-        else
-        {
-            newDest = NewDestination();
-        }
-
-        return newDest;
+        return finalPosition;
     }
 }
