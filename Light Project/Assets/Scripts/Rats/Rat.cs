@@ -1,34 +1,19 @@
 using UnityEngine;
-using UnityEngine.AI;
 
 public class Rat : MonoBehaviour
 {
-    private NavMeshAgent nav;
-    private const int SEEK_RADIUS = 15;
-    
-    private void Start()
+    private void OnTriggerStay(Collider other)
     {
-        nav = GetComponent<NavMeshAgent>();
-        nav.destination = NewDestination();
-    }
-
-    private void Update()
-    {
-        if(nav.remainingDistance > 1)
+        Debug.Log(other.tag);
+        if (other.tag == "Player" && Input.GetKeyDown(KeyCode.Space))
         {
-            nav.destination = NewDestination();
+            Die();
         }
-
     }
 
-    private Vector3 NewDestination()
+    private void Die()
     {
-        Vector3 randomDirection = Random.insideUnitSphere * SEEK_RADIUS;
-        randomDirection += transform.position;
-        NavMeshHit hit;
-        NavMesh.SamplePosition(randomDirection, out hit, SEEK_RADIUS, 1);
-        Vector3 finalPosition = hit.position;
-
-        return finalPosition;
+        GameObject.Destroy(gameObject);
+        //Find Scoermanaher
     }
 }

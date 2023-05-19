@@ -16746,9 +16746,10 @@ GameObject:
   - component: {fileID: 582706835}
   - component: {fileID: 582706834}
   - component: {fileID: 582706836}
+  - component: {fileID: 582706837}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16799,6 +16800,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a4633f98b68385409981693ce3a304f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!136 &582706837
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 582706833}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.35
+  m_Height: 1.5
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &583534573
 GameObject:
   m_ObjectHideFlags: 0
@@ -18227,7 +18242,6 @@ GameObject:
   - component: {fileID: 630991467}
   - component: {fileID: 630991470}
   - component: {fileID: 630991469}
-  - component: {fileID: 630991468}
   m_Layer: 0
   m_Name: Body
   m_TagString: Untagged
@@ -18243,26 +18257,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 630991466}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.075, z: 0}
   m_LocalScale: {x: 0.125, y: 0.125, z: 0.125}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1895918749}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &630991468
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 630991466}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &630991469
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -56313,7 +56314,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1895918749}
   - component: {fileID: 1895918748}
-  - component: {fileID: 1895918747}
+  - component: {fileID: 1895918752}
+  - component: {fileID: 1895918750}
+  - component: {fileID: 1895918751}
   m_Layer: 0
   m_Name: Rat
   m_TagString: Untagged
@@ -56321,18 +56324,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1895918747
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1895918746}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ac0c7bb4b8f5eb4986cbbf12f691192, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!195 &1895918748
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -56343,7 +56334,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 2.5
+  m_Speed: 3
   m_Acceleration: 10
   avoidancePriority: 50
   m_AngularSpeed: 180
@@ -56371,6 +56362,43 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1895918750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1895918746}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3edd30c60d676744aad82de3d2bec57e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1895918751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1895918746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ac0c7bb4b8f5eb4986cbbf12f691192, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!135 &1895918752
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1895918746}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.375
+  m_Center: {x: 0, y: 0.075, z: 0}
 --- !u!1 &1898812530
 GameObject:
   m_ObjectHideFlags: 0
